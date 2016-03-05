@@ -112,10 +112,16 @@ namespace alpr
 
   void displayImage(Config* config, string windowName, cv::Mat frame)
   {
-    if (config->debugShowImages)
+    char filename[150] = "";
+
+    if (config->debugShowImages && !config->disableDebugGui)
     {
       imshow(windowName, frame);
       cv::waitKey(5);
+    }
+    if (config->saveImages) {
+      snprintf(filename, sizeof(filename) -1, "%s/openanpr-%s.jpg", config->savedImagesDir.c_str(), windowName.c_str());
+      imwrite(filename, frame);
     }
   }
 

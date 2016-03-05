@@ -60,7 +60,14 @@ postprocess_min_confidence = 65
 ; chance that the character is incorrect and will be skipped.  Value is a confidence percent
 postprocess_confidence_skip_level = 80
 
+; Save debug images to a directory
+save_images     = 0
+saved_images_dir = ${CMAKE_INSTALL_PREFIX}/share/openalpr/runtime_data
 
+; Disable the GUI and wait timer when in debug mode, useful in combination with save_images option
+disable_debug_gui = 0
+
+; In debug mode all these parameters will be enabled
 debug_general         = 0
 debug_timing          = 0
 debug_detector        = 0

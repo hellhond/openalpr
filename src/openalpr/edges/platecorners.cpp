@@ -98,7 +98,7 @@ namespace alpr
       line(imgCorners, this->bestBottom.p1, this->bestBottom.p2, Scalar(0, 0, 255), 1, CV_AA);
       line(imgCorners, this->bestLeft.p1, this->bestLeft.p2, Scalar(255, 0, 0), 1, CV_AA);
 
-      displayImage(pipelineData->config, "Winning top/bottom Boundaries", imgCorners);
+      displayImage(pipelineData->config, "Winning top-bottom Boundaries", imgCorners);
     }
 
     // Check if a left/right edge has been established.

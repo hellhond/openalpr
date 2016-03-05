@@ -192,7 +192,7 @@ namespace alpr
     }
 
 
-    if (config->debugPauseOnFrame)
+    if (config->debugPauseOnFrame && !config->disableDebugGui)
     {
       // Pause indefinitely until they press a key
       while ((char) cv::waitKey(50) == -1)

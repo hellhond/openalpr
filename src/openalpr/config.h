@@ -112,6 +112,8 @@ namespace alpr
       int ocrMinFontSize;
 
       bool mustMatchPattern;
+      bool saveImages;
+      bool disableDebugGui;
       
       float postProcessMinConfidence;
       float postProcessConfidenceSkipLevel;
@@ -144,6 +146,7 @@ namespace alpr
       std::string getTessdataPrefix();
 
       std::string runtimeBaseDir;
+      std::string savedImagesDir;
 
       std::vector<std::string> loaded_countries;
 

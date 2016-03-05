@@ -158,6 +158,7 @@ namespace alpr
     CSimpleIniA* ini = &iniObj;
     
     runtimeBaseDir = getString(ini, "", "runtime_dir", "/usr/share/openalpr/runtime_data");
+    savedImagesDir = getString(ini, "", "saved_images_dir", "");
 
     std::string detectorString = getString(ini, "", "detector", "lbpcpu");
     std::transform(detectorString.begin(), detectorString.end(), detectorString.begin(), ::tolower);
@@ -214,6 +215,18 @@ namespace alpr
     debugPostProcess = 	getBoolean(ini, "", "debug_postprocess", 	false);
     debugShowImages = 	getBoolean(ini, "", "debug_show_images",	false);
     debugPauseOnFrame = 	getBoolean(ini, "", "debug_pause_on_frame",	false);
+
+    saveImages = getBoolean(ini, "", "save_images",	false);
+    disableDebugGui = getBoolean(ini, "", "disable_debug_gui", false);
+
+    if (savedImagesDir.compare("") == 0) {
+      saveImages = false;
+    }
+
+    if (!DirectoryExists(savedImagesDir.c_str())) {
+      std::cerr << "saved_images_dir " << savedImagesDir << " does not exist, not saving images" << std::endl;
+      saveImages = false;
+    }
 
   }
   
